@@ -4,7 +4,7 @@ In this assignment, I implemented 2-Layer Neural Net with Sofmax Classifier. I P
 • Two weights W1, W2 with biased b1, b2.
 • Predicted output y' = W2 relu W2x + b1 + b2.
 • Total loss = data loss (softmax+log likelihood loss) + L-2 regularization loss (to W1, W2, not b1, b2).
-1. description of my code
+## 1. description of my code
 a) neural_net.py
 ```
     #############################################################################
@@ -169,10 +169,10 @@ print('best validation accuracy: %f' % best_val)
 ```
 In hyperparameter tuning part, I tried to find the optimal learning rate and regularization strengths. The learning rates I tested were 1e-2, 1e-3, 1e-4 and the regularization strenghts were 0.3, 0.4, 0.5. I used a for loop to test all cases. I applied each parameter to TwoLayerNet and stored the highest accuracy in the best_val variable.
 
-2. results
+## 2. results
+![image](https://user-images.githubusercontent.com/60259747/225597207-4483ed47-178d-4b59-bae6-8158d4be3510.png)
 
-3. Discussion
-
+## 3. Discussion
 My optimal hyperparameters were learning rates 0.001, regularization strengths 0.4, batch size 200, learning rate decay 0.95.
 Best validation accuracy achieved during cross validation was 0.475.
 Final test accuracy was 0.477.

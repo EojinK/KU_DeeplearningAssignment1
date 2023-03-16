@@ -1,11 +1,14 @@
-# KU_DeeplearningAssignment1
+
+github url: https://github.com/EojinK/KU_DeeplearningAssignment1
 
 In this assignment, I implemented 2-Layer Neural Net with Sofmax Classifier. I Performed the image classification using “CIFAR-10” dataset.
 • Two weights W1, W2 with biased b1, b2.
 • Predicted output y' = W2 relu W2x + b1 + b2.
 • Total loss = data loss (softmax+log likelihood loss) + L-2 regularization loss (to W1, W2, not b1, b2).
+
+
 ## 1. description of my code
-a) neural_net.py
+### a) neural_net.py
 ```python
     #############################################################################
     # TODO: Perform the forward pass, computing the class scores for the input. #
@@ -67,15 +70,15 @@ a) neural_net.py
     #########################################################################
     # TODO: Create a random minibatch of training data and labels, storing  #
     # them in X_batch and y_batch respectively.                             #
-    # - See [ np.random.choice ]					    #
+	# - See [ np.random.choice ]											#
     #########################################################################
-    # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
+	# *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 	  
     random_indices = np.random.choice(num_train, batch_size)
     X_batch = X[random_indices]
     y_batch = y[random_indices]
 	  
-    # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
+	# *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
     
     # ... 중략 
     
@@ -85,32 +88,36 @@ a) neural_net.py
     # using stochastic gradient descent. You'll need to use the gradients   #
     # stored in the grads dictionary defined above.                         #
     #########################################################################
-    # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
+	# *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 	  
     self.params['W2'] -= learning_rate * grads['W2']
     self.params['b2'] -= learning_rate * grads['b2']
     self.params['W1'] -= learning_rate * grads['W1']
     self.params['b1'] -= learning_rate * grads['b1']
 	  
-    # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
+	# *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
     
     # ... 중략 
     
     ###########################################################################
     # TODO: Implement this function; it should be VERY simple!                #
-    # perform forward pass and return index of maximum scores		      #
+	# perform forward pass and return index of maximum scores				  #
     ###########################################################################
-    # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
+	# *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 	
     a1 = np.maximum(0, np.dot(X, self.params['W1']) + self.params['b1'] ) 
     scores = np.dot(a1, self.params['W2']) + self.params['b2']
     y_pred = np.argmax(scores, axis=1)
 	
-    # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
-
+	# *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
+```
 In neural_net file, I put z1 as a pre-activation of first layer(z = wx + b), a1 as an activation of first layer, scores as a pre-activation of second layer. I builded a2 value (regularization of W1 and W2 data) and loss value (with softmax). To compute backward pass, I made dscores and hidden values that can be used in grads dictionary. I created X_batch, y_batch and stored random indices with function np.random.choice(). Using stochastic gradient descent, I updated gradients from W2 to W1, from b2 to b1. Finally, I put a1, scores, y_pred to final predict result.
-b) Hyperparameter tuning in two_layer_net.ipynb
 
+### b) Hyperparameter tuning in two_layer_net.ipynb
+
+
+
+```python
 
 best_net = None # store the best model into this 
 
@@ -170,7 +177,8 @@ print('best validation accuracy: %f' % best_val)
 In hyperparameter tuning part, I tried to find the optimal learning rate and regularization strengths. The learning rates I tested were 1e-2, 1e-3, 1e-4 and the regularization strenghts were 0.3, 0.4, 0.5. I used a for loop to test all cases. I applied each parameter to TwoLayerNet and stored the highest accuracy in the best_val variable.
 
 ## 2. results
-![image](https://user-images.githubusercontent.com/60259747/225597207-4483ed47-178d-4b59-bae6-8158d4be3510.png)
+
+![](https://velog.velcdn.com/images/eojin16/post/57013532-646b-4e89-b0bc-a705cbca5eda/image.png)
 
 ## 3. Discussion
 My optimal hyperparameters were learning rates 0.001, regularization strengths 0.4, batch size 200, learning rate decay 0.95.

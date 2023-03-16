@@ -1,4 +1,7 @@
 
+# KU_DeeplearningAssignment1
+This is an assignment1 I did while taking a deep learning course at Korea University.
+
 github url: https://github.com/EojinK/KU_DeeplearningAssignment1
 
 In this assignment, I implemented 2-Layer Neural Net with Sofmax Classifier. I Performed the image classification using “CIFAR-10” dataset.

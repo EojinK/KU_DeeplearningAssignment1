@@ -6,7 +6,7 @@ In this assignment, I implemented 2-Layer Neural Net with Sofmax Classifier. I P
 • Total loss = data loss (softmax+log likelihood loss) + L-2 regularization loss (to W1, W2, not b1, b2).
 1. description of my code
 a) neural_net.py
-
+```
     #############################################################################
     # TODO: Perform the forward pass, computing the class scores for the input. #
     # Store the result in the scores variable, which should be an array of      #
@@ -166,8 +166,9 @@ print('best validation accuracy: %f' % best_val)
 
 
 # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
-
+```
 In hyperparameter tuning part, I tried to find the optimal learning rate and regularization strengths. The learning rates I tested were 1e-2, 1e-3, 1e-4 and the regularization strenghts were 0.3, 0.4, 0.5. I used a for loop to test all cases. I applied each parameter to TwoLayerNet and stored the highest accuracy in the best_val variable.
+
 2. results
 
 3. Discussion
